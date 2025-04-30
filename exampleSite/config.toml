@@ -2,7 +2,21 @@ baseURL = "https://sxy91.com/"
 languageCode = "zh"
 title = "宋洋葱的博客"
 theme = "wehuth"
-paginate = 15
+
+#paginate = 15 # paginate was deprecated in Hugo v0.128.0
+[pagination]
+  pagerSize = 15
+
+[outputs]
+  home = ["HTML", "ADS"]
+
+[outputFormats]
+  [outputFormats.ADS]
+    name = "ADS"
+    path = "/"
+    mediaType = "text/plain"
+    baseName = "ads"
+    isPlainText = true  
 
 #pygmentsCodefences = true # 代码高亮
 hasCJKLanguage = true

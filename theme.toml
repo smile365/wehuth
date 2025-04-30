@@ -14,13 +14,3 @@ min_version = "0.41"
   name = "宋洋葱"
   homepage = "https://sxy91.com"
 
-# config.toml
-[outputs]
-  home = ["HTML", "ADS"]
-
-[outputFormats]
-  [outputFormats.ADS]
-    name = "ADS"
-    mediaType = "text/plain"
-    baseName = "ads"
-    isPlainText = true
