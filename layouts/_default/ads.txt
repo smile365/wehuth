@@ -1,0 +1,4 @@
+{{/* layouts/_default/ads.txt */}}
+{{ with site.Params.adsense_publisher_id }}
+google.com, {{ . }}, DIRECT, f08c47fec0942fa0
+{{ end }}

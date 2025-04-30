@@ -10,6 +10,16 @@ watch = true
 
 #uglyURLs = true # 使用html后缀
 
+outputs:
+  home: [HTML, RSS, JSON, ads]
+
+outputFormats:
+  ads:
+    mediaType: text/plain
+    baseName: ads
+    isPlainText: true
+    notAlternative: true
+    permalinkable: true
 
 [blackfriday]
   extensions = ["noEmptyLineBeforeBlock"]
@@ -45,7 +55,8 @@ watch = true
   description = "研究互联网产品和技术，提供原创中文精品教程" # site description
   keywords = "javascript,html,jquery,git,python,java,css,linux,bitcoin,教程,软件,编程,开发,运维,云计算,网络,互联网,比特币,数字货币,博客,赚钱" # site keywords
 
-  google_verification = ""
+
+  adsense_publisher_id = "pub-4662105987705607"
   bing_verification = ""
   yandex_verification = ""
   pinterest_verification = ""
