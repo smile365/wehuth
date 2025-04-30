@@ -10,16 +10,6 @@ watch = true
 
 #uglyURLs = true # 使用html后缀
 
-outputs:
-  home: [HTML, RSS, JSON, ads]
-
-outputFormats:
-  ads:
-    mediaType: text/plain
-    baseName: ads
-    isPlainText: true
-    notAlternative: true
-    permalinkable: true
 
 [blackfriday]
   extensions = ["noEmptyLineBeforeBlock"]
