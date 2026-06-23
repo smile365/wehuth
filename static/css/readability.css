@@ -322,11 +322,50 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive images */
 .typo img {
-  max-width: 50%;
+  max-width: 100%;
+  height: auto;
 }
 
 /* 表格下的图片 */
 td img {
     width: 100px;
     max-height: 200px;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  html {
+    color: var(--text-color, #c8c8c8);
+    background: var(--bg-color, #1a1a2e);
+  }
+  strong, b {
+    color: #ddd;
+  }
+  pre, code {
+    background-color: #2d2d44 !important;
+    border-color: #444 !important;
+    color: #c8c8c8 !important;
+  }
+  blockquote {
+    color: #999;
+    border-left-color: #555;
+  }
+  .typo table th,
+  .typo table td {
+    color: #bbb;
+    border-color: #444;
+  }
+  .typo table tbody tr:nth-child(even) td,
+  .typo table tbody tr:nth-child(even) th {
+    background-color: #2d2d44;
+  }
+  .typo table thead th {
+    background: #2d2d44;
+  }
+  .typo table th {
+    background: #3d3d55;
+  }
+  .typo table caption {
+    color: #bbb;
+  }
 }

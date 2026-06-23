@@ -1,0 +1,16 @@
+prev_page:
+  other: "← Prev"
+next_page:
+  other: "Next →"
+all_pages:
+  other: "All Pages"
+page_not_found:
+  other: "Page not found"
+back_to_home:
+  other: "Back to Home"
+table_of_contents:
+  other: "Table of Contents"
+prev_post:
+  other: "←"
+next_post:
+  other: "→"

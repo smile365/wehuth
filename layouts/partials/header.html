@@ -1,25 +1,25 @@
 
 
-  <div style="background-color:#fafafa">
+  <div style="background-color:var(--card-bg, #fafafa)">
     <div class="header">
-      <a href="{{ .Site.BaseURL }}">        
+      <a href="{{ "" | relLangURL }}">
         <div class="avatar">
-          <img src="/img/avatar.jpg" alt="{{ .Site.Params.Author }}" />
+          <img src="{{ "img/avatar.jpg" | relURL }}" alt="{{ .Site.Params.Author }}" />
         </div>
       </a>
       <div class="desc">
           <div class="name">
-            <a href="{{ .Site.BaseURL }}" >
+            <a href="{{ "" | relLangURL }}" >
               <span>{{ .Site.Params.Author }}</span>
             </a>
           </div>
-          <div> 
+          <div>
               <span>{{ .Site.Params.Subtitle }}</span>
           </div>
-          <div class="social" >
-            <a href="{{ .Site.Params.wechat }}"><span class="iconfont icon-weixingongzhonghao"></span></a>
-            <a href="{{ .Site.Params.zhihu }}"><span class="iconfont icon-zhihu"></span></a>
-            <a href="{{ .Site.Params.github }}"><span class="iconfont icon-github"></span></a>
+          <div class="social">
+            {{ with .Site.Params.wechat }}<a href="{{ . }}" aria-label="WeChat"><span class="iconfont icon-weixingongzhonghao"></span></a>{{ end }}
+            {{ with .Site.Params.zhihu }}<a href="{{ . }}" aria-label="Zhihu"><span class="iconfont icon-zhihu"></span></a>{{ end }}
+            {{ with .Site.Params.github }}<a href="{{ . }}" aria-label="GitHub"><span class="iconfont icon-github"></span></a>{{ end }}
           </div>
       </div>
     </div>

@@ -1,0 +1,16 @@
+prev_page:
+  other: "← 上一页"
+next_page:
+  other: "下一页 →"
+all_pages:
+  other: "所有页面"
+page_not_found:
+  other: "页面未找到"
+back_to_home:
+  other: "返回首页"
+table_of_contents:
+  other: "目录"
+prev_post:
+  other: "←"
+next_post:
+  other: "→"

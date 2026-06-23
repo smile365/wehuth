@@ -1,0 +1,12 @@
+<footer class="footer">
+  <div class="footer-content">
+    <p class="copyright">版权所有 &copy;2018 - {{ now.Year }} sxy91.com</p>
+    {{ with .Site.Copyright }}
+    <p class="copyright">{{ . | safeHTML }}</p>
+    {{ end }}
+    <p class="powered-by">
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> &amp;
+      <a href="https://github.com/smile365/wehuth" target="_blank" rel="noopener">Wehuth</a>
+    </p>
+  </div>
+</footer>

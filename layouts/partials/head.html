@@ -1,60 +1,96 @@
 <head>
   <meta charset="UTF-8">
-  <!-- Site Generator -->
   {{ hugo.Generator }}
-  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "img/favicon-16x16.png" | relURL }}" />
+
   {{ if .Params.tags }}
   <meta name="keywords" content="{{ delimit .Params.tags ", " }}">
   {{ else if .Site.Params.Keywords }}
   <meta name="keywords" content="{{ .Site.Params.Keywords }}">
   {{ end }}
-  
+
   {{ if .Description }}
   <meta name="description" content="{{ .Description }}">
   {{ else if .Site.Params.Description}}
   <meta name="description" content="{{ .Site.Params.Description }}">
   {{ end }}
 
-  <title>
-     {{ if .IsHome }}
-        首页 - {{ .Site.Title }}
-     {{ else if .Params.heading }}
-         {{ .Params.heading }}
-     {{ else }}
-         {{ .Title }} | {{ .Site.Title }}
-     {{ end }}
-  </title>
-  <meta name="title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else if .Params.heading }}{{ .Params.heading }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end}}">
-  <link rel="alternate" href="{{ .RelPermalink }}" type="application/rss+xml" title="{{ site.Title }}">
-  <link rel="feed" href="{{ .RelPermalink }}" type="application/rss+xml" title="{{ site.Title }}">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else if .Params.heading }}{{ .Params.heading }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else if .Params.heading }}{{ .Params.heading }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  <!-- RSS -->
+  <link rel="alternate" href="{{ "index.xml" | relURL }}" type="application/rss+xml" title="{{ site.Title }}">
+  <link rel="feed" href="{{ "index.xml" | relURL }}" type="application/rss+xml" title="{{ site.Title }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{ with .Site.Params.image.url }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  {{ with .Site.Params.image.url }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
+
+  <!-- Dark mode CSS variables -->
+  <style>
+    :root {
+      --bg-color: #fff;
+      --text-color: #333;
+      --link-color: #069;
+      --border-color: #f2f2f2;
+      --card-bg: #fafafa;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1a2e;
+        --text-color: #c8c8c8;
+        --link-color: #6cf;
+        --border-color: #333;
+        --card-bg: #16213e;
+      }
+      html { background: var(--bg-color); }
+    }
+  </style>
 
   {{ partial "seo_schema" . }}
-
   {{ partial "css" . }}
 
-  <!-- Google adsense -->
-<script data-ad-client="ca-pub-4662105987705607" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4662105987705607"
-     crossorigin="anonymous"></script>
-<!-- Google adsense end -->
+  <!-- Google AdSense -->
+  {{ with .Site.Params.adsense_publisher_id }}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ . }}" crossorigin="anonymous"></script>
+  {{ end }}
 
+  <!-- Baidu Analytics -->
+  {{ with .Site.Params.baidu_analytics }}
   <script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?d1336a401125408e2b0cc8a38bcbf17a";
-    var s = document.getElementsByTagName("script")[0]; 
+    hm.src = "https://hm.baidu.com/hm.js?{{ . }}";
+    var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
   </script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174571289-1"></script>
+  {{ end }}
+
+  <!-- Google Analytics -->
+  {{ with .Site.Params.ga4 }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'UA-174571289-1');
+    gtag('config', '{{ . }}');
   </script>
+  {{ end }}
 </head>

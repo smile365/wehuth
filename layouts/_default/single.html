@@ -1,29 +1,65 @@
-{{ define "content" -}}
+{{ define "content" }}
+<div class="typo">
+    <h2 class="post_title">{{ .Title }}</h2>
 
+    <div class="rich_media_meta_list">
+        <em class="rich_media_meta rich_media_meta_text">{{ .Date.Format "2006-01-02" }}</em>
+        <em class="rich_media_meta rich_media_meta_text">{{ .Site.Params.author }}</em>
+        <a class="rich_media_meta" href="{{ "" | relLangURL }}">{{ .Site.Params.author }}</a>
+        {{ if (default true .Site.Params.enableReadingTime) }}
+        <em class="rich_media_meta rich_media_meta_text">{{ .ReadingTime }} min</em>
+        {{ end }}
+    </div>
 
-  <div class="typo">
-      <h2 class="post_title">
-          {{ .Title}}
-      </h2>
-      
-      <div class="rich_media_meta_list">
-          <em class="rich_media_meta rich_media_meta_text">{{ .Date.Format "2006-01-02" }}</em>
-          <em class="rich_media_meta rich_media_meta_text">{{ .Site.Params.author }}</em>
-          <a class="rich_media_meta" href="{{ .Site.BaseURL }}">{{ .Site.Params.author }}</a>
-      </div>
-      {{ .Content }}
+    <!-- Categories -->
+    {{ with .Params.categories }}
+    <div class="post-meta">
+        {{ range . }}
+        <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}" class="post-category">{{ . }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+    <!-- Tags -->
+    {{ with .Params.tags }}
+    <div class="post-meta">
+        {{ range . }}
+        <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="post-tag">#{{ . }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
 
-      <div id="vcomments"></div>
-  </div>
+    <!-- Table of Contents -->
+    {{ if and (default true .Site.Params.enableToc) (ge .WordCount 400) }}
+    <details class="toc">
+        <summary>{{ default "目录" (i18n "table_of_contents") }}</summary>
+        {{ .TableOfContents }}
+    </details>
+    {{ end }}
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js"></script>
-    
+    {{ .Content }}
+
+    <!-- Comments: Valine -->
+    {{ with .Site.Params.valine_appId }}
+    {{ with $.Site.Params.valine_appKey }}
+    <div id="vcomments"></div>
+    <script src="https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js"></script>
     <script>
       new Valine({
           el: '#vcomments',
-          appId: 'GOpJE0RYEAk1LV2p6Nt5VWdJ-gzGzoHsz',
-          appKey: 'Y6wdl2wwJ1N9PhY6H8t13Iha'
-      })
-   </script>
+          appId: '{{ . }}',
+          appKey: '{{ $.Site.Params.valine_appKey }}'
+      });
+    </script>
+    {{ end }}{{ end }}
 
-{{- end }}
+    <!-- Prev/Next Navigation -->
+    <nav class="post-nav">
+        {{ with .PrevInSection }}
+        <a class="post-nav-prev" href="{{ .RelPermalink }}">{{ default "←" (i18n "prev_post") }} {{ .Title }}</a>
+        {{ end }}
+        {{ with .NextInSection }}
+        <a class="post-nav-next" href="{{ .RelPermalink }}">{{ .Title }} {{ default "→" (i18n "next_post") }}</a>
+        {{ end }}
+    </nav>
+</div>
+{{ end }}

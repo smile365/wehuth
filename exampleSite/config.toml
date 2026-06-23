@@ -1,9 +1,8 @@
-baseURL = "https://sxy91.com/"
+baseURL = "https://example.com/"
 languageCode = "zh"
 title = "宋洋葱的博客"
 theme = "wehuth"
 
-#paginate = 15 # paginate was deprecated in Hugo v0.128.0
 [pagination]
   pagerSize = 15
 
@@ -16,17 +15,10 @@ theme = "wehuth"
     path = "/"
     mediaType = "text/plain"
     baseName = "ads"
-    isPlainText = true  
+    isPlainText = true
 
-#pygmentsCodefences = true # 代码高亮
 hasCJKLanguage = true
 watch = true
-
-#uglyURLs = true # 使用html后缀
-
-
-[blackfriday]
-  extensions = ["noEmptyLineBeforeBlock"]
 
 [menu]
   [[menu.main]]
@@ -49,28 +41,35 @@ watch = true
     url = "/categories/tools"
     weight = 7
 
-# Add your own params here
 [params]
   home_path = "/categories/life"
   author = "宋洋葱"
-  #aboutme = "javascript:;"
   aboutme = "https://github.com/smile365"
   subtitle = "若你欲哭无泪，我送你一颗洋葱啊"
-  description = "研究互联网产品和技术，提供原创中文精品教程" # site description
-  keywords = "javascript,html,jquery,git,python,java,css,linux,bitcoin,教程,软件,编程,开发,运维,云计算,网络,互联网,比特币,数字货币,博客,赚钱" # site keywords
+  description = "研究互联网产品和技术，提供原创中文精品教程"
+  keywords = "javascript,html,jquery,git,python,java,css,linux,blog"
 
+  # 第三方服务 (设为空或不设置则不启用)
+  adsense_publisher_id = "4662105987705607"       # Google AdSense publisher ID (不含 pub-)
+  # baidu_analytics = "d1336a401125408e2b0cc8a38bcbf17a"  # 百度统计 HM ID
+  # ga4 = "G-XXXXXXXXXX"                          # Google Analytics 4 Measurement ID
 
-  adsense_publisher_id = "pub-4662105987705607"
-  bing_verification = ""
-  yandex_verification = ""
-  pinterest_verification = ""
-  baidu_verification = ""
-    
+  # Valine 评论 (设为空或不设置则不启用)
+  # valine_appId = "your-valine-appId"
+  # valine_appKey = "your-valine-appKey"
 
-  license= 'Released under <a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+  # 功能开关
+  # enableToc = true          # 文章目录 (默认开启)
+  # enableReadingTime = true  # 阅读时间 (默认开启)
 
-  # Choose your social networks
+  # OG/Twitter 卡片默认图片
+  # [params.image]
+  #   url = "https://example.com/images/og.png"
+
+  # Copyright
+  license = 'Released under <a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+
+  # 社交链接
   github = "https://github.com/smile365"
-  wechat= "https://github.com/smile365" 
+  wechat = "https://github.com/smile365"
   zhihu = "https://www.zhihu.com/people/sxy91"
- 

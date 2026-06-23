@@ -1,0 +1,14 @@
+{{ define "content" }}
+<div class="post-warp">
+    <h1 class="terms-title">{{ .Title }}</h1>
+    {{ .Content }}
+    <ul class="terms-list">
+        {{ range .Pages }}
+        <li class="terms-item">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <span class="terms-count">({{ len .Pages }})</span>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

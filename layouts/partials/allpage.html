@@ -1,10 +1,11 @@
-
-{{ define "content" }}   
-
-	{{ range .Pages }}
-	<ul>
-		<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-	</ul>
-	{{ end }} 
+{{ define "content" }}
+<div class="post-warp archive">
+    <h1>{{ default "所有页面" (i18n "all_pages") }}</h1>
+    {{ range .Pages }}
+    <article class="archive-item">
+        <a href="{{ .RelPermalink }}" class="archive-item-link">{{ .Title }}</a>
+        <span class="archive-item-date">{{ .Date.Format "2006-01-02" }}</span>
+    </article>
+    {{ end }}
 </div>
 {{ end }}

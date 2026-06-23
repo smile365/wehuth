@@ -1,7 +1,6 @@
-
-  <link rel="stylesheet" type="text/css" href="/css/iconfont.css">
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  {{ if .IsPage }}
-  <link rel="stylesheet" type="text/css" href="/css/readability.css">
-  <link rel="stylesheet" type="text/css" href="/css/page.css">
-  {{ end }}
+<link rel="stylesheet" type="text/css" href="{{ "css/iconfont.css" | relURL }}">
+<link rel="stylesheet" type="text/css" href="{{ "css/main.css" | relURL }}">
+{{ if .IsPage }}
+<link rel="stylesheet" type="text/css" href="{{ "css/readability.css" | relURL }}">
+<link rel="stylesheet" type="text/css" href="{{ "css/page.css" | relURL }}">
+{{ end }}

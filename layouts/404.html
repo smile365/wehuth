@@ -1,10 +1,10 @@
 {{ define "content" }}
- <div class="notfound">
-        <h1 class="error-emoji"></h1>
-		  <p class="error-text">/* 404 {{ i18n "page" }} {{ i18n "not" }} {{ i18n "found" }}. */</p>
-		  <p class="error-link"><a href="{{ .Site.BaseURL }}">↑ {{ i18n "back" }} {{ i18n "to" }} {{ i18n "Home" }} ↑</a></p>
- </div>
- <script>
+<div class="notfound">
+    <h1 class="error-emoji"></h1>
+    <p class="error-text">/* 404 {{ default "Page not found" (i18n "page_not_found") }} */</p>
+    <p class="error-link"><a href="{{ "" | relLangURL }}">↑ {{ default "Back to Home" (i18n "back_to_home") }} ↑</a></p>
+</div>
+<script>
   var errorEmojiContainer = document.getElementsByClassName('error-emoji')[0];
   var emojiArray = [
     '\\(o_o)/', '(o^^)o', '(˚Δ˚)b', '(^-^*)', '(≥o≤)', '(^_^)b', '(·_·)',

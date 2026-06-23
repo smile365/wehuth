@@ -10,10 +10,12 @@ body{
   padding:20px 15px 15px;
   margin-left: auto;
   margin-right: auto;
+  background-color: var(--bg-color, #fff);
+  color: var(--text-color, #333);
 }
 
 .typo .post_title {
-    margin-bottom: 0.1em; 
+    margin-bottom: 0.1em;
     margin-top: 0;
     font-weight: 300;
 }
@@ -37,6 +39,6 @@ body{
 }
 
 .rich_media_meta_text {
-    color:#8c8c8c
+    color:var(--meta-color, #8c8c8c)
 }
 
