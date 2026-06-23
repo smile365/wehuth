@@ -34,12 +34,24 @@
   <meta property="og:url" content="{{ .Permalink }}">
   {{ with .Site.Params.image.url }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
   <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:locale" content="{{ .Site.LanguageCode | default "zh" }}">
+  {{ if .IsPage }}
+  {{ with .PublishDate }}<meta property="article:published_time" content="{{ .Format "2006-01-02T15:04:05-07:00" }}">{{ end }}
+  {{ with .Lastmod }}<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05-07:00" }}">{{ end }}
+  {{ with .Params.tags }}{{ range . }}<meta property="article:tag" content="{{ . }}">{{ end }}{{ end }}
+  {{ with .Params.categories }}{{ range first 1 . }}<meta property="article:section" content="{{ . }}">{{ end }}{{ end }}
+  {{ end }}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
   <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   {{ with .Site.Params.image.url }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
+  {{ with .Site.Params.twitter }}<meta name="twitter:site" content="{{ . }}">{{ end }}
+  {{ with .Site.Params.twitterCreator }}<meta name="twitter:creator" content="{{ . }}">{{ end }}
+
+  <!-- Robots -->
+  {{ with .Params.robots }}<meta name="robots" content="{{ . }}">{{ end }}
 
   <!-- Dark mode CSS variables -->
   <style>

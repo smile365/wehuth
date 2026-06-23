@@ -66,6 +66,13 @@ watch = true
   # [params.image]
   #   url = "https://example.com/images/og.png"
 
+  # Twitter 账号 (用于 Twitter Card)
+  # twitter = "@smile365"
+  # twitterCreator = "@smile365"
+
+  # 相关文章最多显示数量 (默认 5)
+  # relatedMaxCount = 5
+
   # Copyright
   license = 'Released under <a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
 
