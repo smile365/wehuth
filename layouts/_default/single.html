@@ -38,6 +38,23 @@
 
     {{ .Content }}
 
+    <!-- Related Content -->
+    {{ $relatedMax := default 5 .Site.Params.relatedMaxCount }}
+    {{ $related := .Site.RegularPages.Related . | first $relatedMax }}
+    {{ with $related }}
+    <div class="related-content">
+        <h3>{{ default "相关文章" (i18n "related_content") }}</h3>
+        <ul>
+            {{ range . }}
+            <li>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <span class="related-date">{{ .Date.Format "2006-01-02" }}</span>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+
     <!-- Comments: Valine -->
     {{ with .Site.Params.valine_appId }}
     {{ with $.Site.Params.valine_appKey }}

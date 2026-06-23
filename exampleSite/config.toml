@@ -73,3 +73,21 @@ watch = true
   github = "https://github.com/smile365"
   wechat = "https://github.com/smile365"
   zhihu = "https://www.zhihu.com/people/sxy91"
+
+
+
+[related]
+
+  [[related.indices]]
+  name = "tags"
+  weight = 100
+
+  [[related.indices]]
+  name = "title"
+  weight = 90
+
+  [[related.indices]]
+  name = "keywords"
+  weight = 80
+
+
