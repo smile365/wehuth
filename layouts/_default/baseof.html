@@ -13,5 +13,18 @@
         </main>
       {{ partial "footer.html" . }}
      </div>
+     <script>
+     (function() {
+       var links = document.querySelectorAll('a');
+       var baseUrl = '{{ .Site.BaseURL }}';
+       for (var i = 0; i < links.length; i++) {
+         var href = links[i].getAttribute('href');
+         if (href && !href.startsWith(baseUrl) && !href.startsWith('/') && !href.startsWith('#') && !href.startsWith('?')) {
+           links[i].setAttribute('target', '_blank');
+           links[i].setAttribute('rel', 'noopener noreferrer');
+         }
+       }
+     })();
+     </script>
   </body>
 </html>
