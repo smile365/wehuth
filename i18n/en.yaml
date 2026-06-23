@@ -16,3 +16,9 @@ next_post:
   other: "→"
 related_content:
   other: "Related Posts"
+comments_title:
+  other: "Leave a Comment"
+comments_notice:
+  other: "Your email address will not be published. Required fields are marked *"
+comments_placeholder:
+  other: "Say something..."

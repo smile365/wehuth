@@ -16,3 +16,9 @@ next_post:
   other: "→"
 related_content:
   other: "相关文章"
+comments_title:
+  other: "发表评论"
+comments_notice:
+  other: "您的邮箱地址不会被公开。必填项已用 * 标注"
+comments_placeholder:
+  other: "说点什么..."

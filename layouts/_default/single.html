@@ -55,20 +55,6 @@
     </div>
     {{ end }}
 
-    <!-- Comments: Valine -->
-    {{ with .Site.Params.valine_appId }}
-    {{ with $.Site.Params.valine_appKey }}
-    <div id="vcomments"></div>
-    <script src="https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js"></script>
-    <script>
-      new Valine({
-          el: '#vcomments',
-          appId: '{{ . }}',
-          appKey: '{{ $.Site.Params.valine_appKey }}'
-      });
-    </script>
-    {{ end }}{{ end }}
-
     <!-- Prev/Next Navigation -->
     <nav class="post-nav">
         {{ with .PrevInSection }}
@@ -78,5 +64,27 @@
         <a class="post-nav-next" href="{{ .RelPermalink }}">{{ .Title }} {{ default "→" (i18n "next_post") }}</a>
         {{ end }}
     </nav>
+
+    <!-- Comments: Valine -->
+    {{ with .Site.Params.valine_appId }}
+    {{ with $.Site.Params.valine_appKey }}
+    <div class="comments-section">
+        <h3 class="comments-title">{{ default "发表评论" (i18n "comments_title") }}</h3>
+        <p class="comments-notice">{{ default "您的邮箱地址不会被公开。必填项已用 * 标注" (i18n "comments_notice") }}</p>
+        <div id="vcomments"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+          el: '#vcomments',
+          appId: '{{ . }}',
+          appKey: '{{ $.Site.Params.valine_appKey }}',
+          placeholder: '{{ default "说点什么..." (i18n "comments_placeholder") }}',
+          requiredFields: ['nick']
+      });
+    </script>
+    {{ end }}{{ end }}
+
+
 </div>
 {{ end }}

@@ -238,6 +238,28 @@ p {
   color: var(--meta-color);
 }
 
+/* Comments section */
+.comments-section {
+  margin-top: 2em;
+  padding-top: 1.2em;
+  border-top: 2px solid var(--border-color);
+}
+
+.comments-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-color);
+}
+
+.comments-notice {
+  font-size: 13px;
+  color: var(--meta-color);
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+
 /* Table of Contents */
 .toc {
   margin: 1em 0;
