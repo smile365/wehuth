@@ -54,9 +54,20 @@ watch = true
   # baidu_analytics = "d1336a401125408e2b0cc8a38bcbf17a"  # 百度统计 HM ID
   # ga4 = "G-XXXXXXXXXX"                          # Google Analytics 4 Measurement ID
 
-  # Valine 评论 (设为空或不设置则不启用)
-  # valine_appId = "your-valine-appId"
-  # valine_appKey = "your-valine-appKey"
+  # giscus 评论 (必填 repo, repo_id, category, category_id，其余可选)
+  # [params.giscus]
+  #   repo = "your-github-username/your-repo"
+  #   repo_id = "R_kgxxxxxxxxx"
+  #   category = "General"
+  #   category_id = "DIC_kwxxxxxxxxx"
+  #   mapping = "pathname"
+  #   strict = "0"
+  #   reactions_enabled = "1"
+  #   emit_metadata = "0"
+  #   input_position = "bottom"
+  #   theme = "preferred_color_scheme"
+  #   lang = "zh-CN"
+  #   loading = "lazy"
 
   # 功能开关
   # enableToc = true          # 文章目录 (默认开启)

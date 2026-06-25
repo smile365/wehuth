@@ -65,25 +65,33 @@
         {{ end }}
     </nav>
 
-    <!-- Comments: Valine -->
-    {{ with .Site.Params.valine_appId }}
-    {{ with $.Site.Params.valine_appKey }}
+    <!-- Comments: giscus -->
+    {{ with .Site.Params.giscus }}
+    {{ with .repo }}
+    {{ with $.Site.Params.giscus.repo_id }}
+    {{ with $.Site.Params.giscus.category }}
+    {{ with $.Site.Params.giscus.category_id }}
     <div class="comments-section">
-        <h3 class="comments-title">{{ default "发表评论" (i18n "comments_title") }}</h3>
-        <p class="comments-notice">{{ default "您的邮箱地址不会被公开。必填项已用 * 标注" (i18n "comments_notice") }}</p>
-        <div id="vcomments"></div>
+        <h3 class="comments-title">{{ default "评论" (i18n "comments_title") }}</h3>
+        <div class="giscus"></div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js"></script>
-    <script>
-      new Valine({
-          el: '#vcomments',
-          appId: '{{ . }}',
-          appKey: '{{ $.Site.Params.valine_appKey }}',
-          placeholder: '{{ default "说点什么..." (i18n "comments_placeholder") }}',
-          requiredFields: ['nick']
-      });
+    <script src="https://giscus.app/client.js"
+        data-repo="{{ $.Site.Params.giscus.repo }}"
+        data-repo-id="{{ $.Site.Params.giscus.repo_id }}"
+        data-category="{{ $.Site.Params.giscus.category }}"
+        data-category-id="{{ $.Site.Params.giscus.category_id }}"
+        data-mapping="{{ default "pathname" $.Site.Params.giscus.mapping }}"
+        data-strict="{{ default "0" $.Site.Params.giscus.strict }}"
+        data-reactions-enabled="{{ default "1" $.Site.Params.giscus.reactions_enabled }}"
+        data-emit-metadata="{{ default "0" $.Site.Params.giscus.emit_metadata }}"
+        data-input-position="{{ default "bottom" $.Site.Params.giscus.input_position }}"
+        data-theme="{{ default "preferred_color_scheme" $.Site.Params.giscus.theme }}"
+        data-lang="{{ default "zh-CN" $.Site.Params.giscus.lang }}"
+        data-loading="{{ default "lazy" $.Site.Params.giscus.loading }}"
+        crossorigin="anonymous"
+        async>
     </script>
-    {{ end }}{{ end }}
+    {{ end }}{{ end }}{{ end }}{{ end }}{{ end }}
 
 
 </div>

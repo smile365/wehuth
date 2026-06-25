@@ -7,7 +7,7 @@ licenselink = "https://github.com/smile365/wehuth/blob/master/LICENSE"
 description = "类似微信公众号文章的hugo主题"
 homepage = "https://sxy91.com"
 tags = ['wechat','hugo','theme','微信公众号','主题']
-features = ['opengraph', 'schema', 'adsense', 'googleAnalytics']
+features = ['opengraph', 'schema', 'adsense', 'googleAnalytics', 'giscus']
 min_version = "0.60.0"
 
 [author]
